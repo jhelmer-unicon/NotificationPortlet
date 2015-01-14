@@ -19,6 +19,9 @@
 
 package org.jasig.portlet.notice.service.jpa;
 
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
+
 import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.Set;
@@ -37,6 +40,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name=JpaNotificationService.TABLENAME_PREFIX + "ENTRY")
+@NamedQueries({
+    @NamedQuery(name = "JpaEntry.getAll", query = "from JpaEntry entry")
+})
 /* package-private */ class JpaEntry {
 
     @Id

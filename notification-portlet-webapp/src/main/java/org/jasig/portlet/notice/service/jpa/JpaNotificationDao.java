@@ -21,8 +21,12 @@ package org.jasig.portlet.notice.service.jpa;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 /* package-private */ class JpaNotificationDao implements INotificationDao {
@@ -30,4 +34,35 @@ import org.springframework.stereotype.Repository;
     @PersistenceContext
     private EntityManager entityManager;
 
+
+    @Override
+    public List<JpaEntry> list(Integer page, Integer pageSize) {
+        TypedQuery<JpaEntry> query = entityManager.createNamedQuery("JpaEntry.getAll", JpaEntry.class);
+
+        if (page != null && pageSize != null) {
+            query.setFirstResult(page * pageSize);
+            query.setMaxResults(pageSize);
+        }
+
+        return query.getResultList();
+    }
+
+
+    @Override
+    public JpaEntry find(long id) {
+        JpaEntry entry = entityManager.find(JpaEntry.class, id);
+        return entry;
+    }
+
+
+    @Override
+    public JpaEntry create(JpaEntry entry) {
+        entityManager.persist(entry);
+
+        // grrr.  populate the auto-generated id...
+        entityManager.flush();
+        entityManager.refresh(entry);
+
+        return entry;
+    }
 }

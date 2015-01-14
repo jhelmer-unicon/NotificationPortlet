@@ -35,7 +35,7 @@
 
 
     <context:annotation-config/>
-    <context:component-scan base-package="org.jasig.portlet.notice.util"/>
+    <context:component-scan base-package="org.jasig.portlet.notice.util, org.jasig.portlet.notice.service"/>
 
     <!-- Properties configuration -->
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" lazy-init="false">

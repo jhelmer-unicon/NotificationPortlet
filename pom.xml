@@ -29,6 +29,7 @@
         <resource-server.version>1.0.42</resource-server.version>
         <slf4jVersion>1.7.5</slf4jVersion>
         <spring.version>3.2.12.RELEASE</spring.version>
+        <spring-security.version>3.2.5.RELEASE</spring-security.version>
     </properties>
     
     <licenses>
@@ -140,6 +141,21 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-webmvc-portlet</artifactId>
                 <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-core</artifactId>
+                <version>${spring-security.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-config</artifactId>
+                <version>${spring-security.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-web</artifactId>
+                <version>${spring-security.version}</version>
             </dependency>
 
             <!-- For sl4j/logback logging, see https://wiki.jasig.org/display/PLT/Logging+Best+Practices -->
