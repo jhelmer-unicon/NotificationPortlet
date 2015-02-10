@@ -171,4 +171,18 @@
         <property name="active" value="false"/> <!-- The emergency alerts demo can be activated by the EmergencyAlertAdminController. -->
     </bean>
 
+    <bean class="org.dozer.spring.DozerBeanMapperFactoryBean">
+        <property name="mappingFiles">
+            <list>
+                <value>classpath*:/mapping/jpa-mappings.xml</value>
+            </list>
+        </property>
+        <!--<property name="factories">-->
+            <!--<map>-->
+                <!--<entry key="defaultBeanFactory">-->
+                    <!--<bean class="org.jasig.portlet.notice.service.jpa.JpaEntityFactory"/>-->
+                <!--</entry>-->
+            <!--</map>-->
+        <!--</property>-->
+    </bean>
 </beans>

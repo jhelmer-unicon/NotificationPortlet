@@ -19,11 +19,14 @@
 
 package org.jasig.portlet.notice.service.jpa;
 
+import java.util.List;
 import java.util.Set;
 
 import org.jasig.portlet.notice.NotificationState;
 
 /* package-private */ interface INotificationDao {
+
+    List<JpaEntry> list(Integer page, Integer pageSize);
 
     JpaEntry getEntry(long entryId);
 

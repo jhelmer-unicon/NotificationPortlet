@@ -24,6 +24,7 @@ import org.hibernate.annotations.NamedQuery;
 
 import java.sql.Timestamp;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -78,15 +79,15 @@ import javax.persistence.Table;
 
     @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinColumn(name="ENTRY_ID")
-    private Set<JpaAttribute> attributes = Collections.emptySet();
+    private Set<JpaAttribute> attributes = new HashSet<>();
 
     @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinColumn(name="ENTRY_ID")
-    private Set<JpaAction> actions = Collections.emptySet();
+    private Set<JpaAction> actions = new HashSet<>();
 
     @OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
     @JoinColumn(name="ENTRY_ID")
-    private Set<JpaAddressee> addressees = Collections.emptySet();
+    private Set<JpaAddressee> addressees = new HashSet<>();
 
     public long getId() {
         return id;

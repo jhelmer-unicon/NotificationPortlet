@@ -1,13 +1,17 @@
 package org.jasig.portlet.notice.rest;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Collections;
+import java.util.Set;
 
 
 /**
  * @author Josh Helmer, jhelmer.unicon.net
  */
-public class EntryDTO {
+public class EntryDTO implements Serializable {
+    private static final long serialVersionUid = 1l;
+
     private long id;
     private String title;
     private String url;
@@ -17,7 +21,7 @@ public class EntryDTO {
     private String image;
     private String abs;
     private String body;
-//    private Set<JpaAttribute> attributes = Collections.emptySet();
+    private Set<AttributeDTO> attributes = Collections.emptySet();
 //    private Set<JpaAction> actions = Collections.emptySet();
 //    private Set<JpaAction> events = Collections.emptySet();
 //    private Set<JpaAction> addressees = Collections.emptySet();
@@ -110,5 +114,15 @@ public class EntryDTO {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+
+    public Set<AttributeDTO> getAttributes() {
+        return attributes;
+    }
+
+
+    public void setAttributes(Set<AttributeDTO> attributes) {
+        this.attributes = attributes;
     }
 }

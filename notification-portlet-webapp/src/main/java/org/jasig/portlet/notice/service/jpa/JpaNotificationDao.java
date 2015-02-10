@@ -56,12 +56,32 @@ import org.springframework.transaction.annotation.Transactional;
     }
 
     @Override
+    public List<JpaEntry> list(Integer page, Integer pageSize) {
+        TypedQuery<JpaEntry> query = entityManager.createNamedQuery("JpaEntry.getAll", JpaEntry.class);
+
+        if (page != null && pageSize != null) {
+            query.setFirstResult(page * pageSize);
+            query.setMaxResults(pageSize);
+        }
+
+        return query.getResultList();
+    }
+
+    @Override
     @Transactional
     public JpaEntry createOrUpdateEntry(JpaEntry entry) {
         Validate.notNull(entry, "Argument 'entry' cannot be null");
 
-        JpaEntry rslt = entityManager.merge(entry);
-        return rslt;
+        if (entry.getId() == 0) {
+            entityManager.persist(entry);
+
+            entityManager.flush();
+            entityManager.refresh(entry);
+        } else {
+            entityManager.merge(entry);
+        }
+
+        return entry;
     }
 
     @Override

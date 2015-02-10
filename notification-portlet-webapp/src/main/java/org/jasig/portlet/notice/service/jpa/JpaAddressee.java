@@ -19,6 +19,8 @@
 
 package org.jasig.portlet.notice.service.jpa;
 
+import org.jasig.portlet.notice.rest.RecipientType;
+
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -49,11 +51,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name=JpaNotificationService.TABLENAME_PREFIX + "ADDRESSEE")
 /* package-private */ class JpaAddressee {
-
-    public enum RecipientType {
-        INDIVIDUAL,
-        GROUP
-    }
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
